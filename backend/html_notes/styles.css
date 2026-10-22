@@ -1,0 +1,309 @@
+/* =============================================================
+   HTML Notes — Print-ready CSS
+   Ported from json_pdf theme_default.json + component configs
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+Hebrew:wght@400;700&family=Noto+Sans+Mono:wght@400;700&display=swap');
+
+/* ---- Page setup ---- */
+@page {
+    size: A4;
+    margin: 25mm 20mm;
+}
+
+/* ---- Base typography ---- */
+body {
+    font-family: 'Noto Sans', 'Noto Sans Hebrew', sans-serif;
+    font-size: 11pt;
+    line-height: 1.4;
+    color: rgb(33, 37, 41);
+    margin: 0;
+    padding: 0;
+}
+
+/* ---- RTL support ---- */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .box {
+    border-left: none;
+    border-right: 3px solid;
+}
+
+[dir="rtl"] .box.concept  { border-right-color: rgb(41, 128, 185); }
+[dir="rtl"] .box.definition { border-right-color: rgb(76, 175, 80); }
+[dir="rtl"] .box.example  { border-right-color: rgb(255, 152, 0); }
+[dir="rtl"] .box.note     { border-right-color: rgb(156, 39, 176); }
+[dir="rtl"] .box.warning  { border-right-color: rgb(244, 67, 54); }
+[dir="rtl"] .box.important { border-right-color: rgb(255, 193, 7); }
+
+/* ---- Headings ---- */
+h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    color: rgb(31, 78, 121);
+    margin-top: 12mm;
+    margin-bottom: 6mm;
+    padding-bottom: 3mm;
+    border-bottom: 2px solid rgb(52, 152, 219);
+}
+
+h2 {
+    font-size: 16pt;
+    font-weight: 700;
+    color: rgb(44, 62, 80);
+    margin-top: 10mm;
+    margin-bottom: 4mm;
+}
+
+h3 {
+    font-size: 13pt;
+    font-weight: 700;
+    color: rgb(52, 73, 94);
+    margin-top: 8mm;
+    margin-bottom: 3mm;
+}
+
+/* ---- Paragraphs ---- */
+p {
+    margin: 0 0 4mm 0;
+}
+
+/* ---- Lists ---- */
+ul, ol {
+    margin: 0 0 4mm 0;
+    padding-left: 6mm;
+}
+
+[dir="rtl"] ul,
+[dir="rtl"] ol {
+    padding-left: 0;
+    padding-right: 6mm;
+}
+
+li {
+    margin-bottom: 2mm;
+}
+
+/* ---- Tables ---- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4mm 0 6mm 0;
+    font-size: 10pt;
+}
+
+th, td {
+    border: 1px solid rgb(200, 200, 200);
+    padding: 3mm 4mm;
+    text-align: left;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+    text-align: right;
+}
+
+th {
+    background: rgb(241, 245, 249);
+    font-weight: 700;
+    color: rgb(44, 62, 80);
+}
+
+caption {
+    caption-side: bottom;
+    font-size: 9pt;
+    color: rgb(127, 140, 141);
+    padding-top: 2mm;
+    text-align: left;
+}
+
+[dir="rtl"] caption {
+    text-align: right;
+}
+
+/* ---- Colored boxes ---- */
+.box {
+    border-radius: 4px;
+    padding: 5mm 8mm;
+    margin: 4mm 0 6mm 0;
+    border-left: 3px solid;
+    page-break-inside: avoid;
+}
+
+.box-title {
+    font-weight: 700;
+    font-size: 12pt;
+    margin-bottom: 2mm;
+}
+
+.box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Concept */
+.box.concept {
+    background: rgb(232, 245, 253);
+    border-left-color: rgb(41, 128, 185);
+}
+.box.concept .box-title { color: rgb(31, 78, 121); }
+
+/* Definition */
+.box.definition {
+    background: rgb(232, 245, 233);
+    border-left-color: rgb(76, 175, 80);
+}
+.box.definition .box-title { color: rgb(46, 125, 50); }
+
+/* Example */
+.box.example {
+    background: rgb(255, 243, 224);
+    border-left-color: rgb(255, 152, 0);
+}
+.box.example .box-title { color: rgb(230, 126, 34); }
+
+/* Note */
+.box.note {
+    background: rgb(243, 229, 245);
+    border-left-color: rgb(156, 39, 176);
+}
+.box.note .box-title { color: rgb(123, 31, 162); }
+
+/* Warning */
+.box.warning {
+    background: rgb(255, 235, 238);
+    border-left-color: rgb(244, 67, 54);
+}
+.box.warning .box-title { color: rgb(198, 40, 40); }
+
+/* Important */
+.box.important {
+    background: rgb(255, 253, 231);
+    border-left-color: rgb(255, 193, 7);
+}
+.box.important .box-title { color: rgb(245, 127, 23); }
+
+/* ---- Code blocks ---- */
+pre {
+    background: rgb(40, 44, 52);
+    color: rgb(171, 178, 191);
+    border-radius: 4px;
+    padding: 8mm 10mm;
+    margin: 4mm 0 6mm 0;
+    overflow-x: auto;
+    font-family: 'Noto Sans Mono', monospace;
+    font-size: 9.5pt;
+    line-height: 1.5;
+    page-break-inside: avoid;
+}
+
+pre .code-header {
+    display: block;
+    background: rgb(33, 37, 43);
+    color: rgb(149, 165, 166);
+    font-size: 8pt;
+    margin: -8mm -10mm 4mm -10mm;
+    padding: 2mm 10mm;
+    border-radius: 4px 4px 0 0;
+}
+
+code {
+    font-family: 'Noto Sans Mono', monospace;
+}
+
+/* Inline code */
+p code, li code, td code, .box code {
+    background: rgb(240, 242, 245);
+    padding: 0.5mm 2mm;
+    border-radius: 3px;
+    font-size: 9.5pt;
+    color: rgb(44, 62, 80);
+}
+
+/* ---- Citations ---- */
+cite {
+    display: block;
+    font-size: 8pt;
+    color: rgb(149, 165, 166);
+    font-style: normal;
+    margin-top: 1mm;
+    margin-bottom: 3mm;
+}
+
+cite::before {
+    content: "\1F4AC\00A0";
+}
+
+cite a {
+    color: rgb(41, 128, 185);
+    text-decoration: none;
+}
+
+cite a:hover {
+    text-decoration: underline;
+}
+
+/* ---- Page breaks ---- */
+.page-break {
+    page-break-after: always;
+    break-after: page;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---- Math (KaTeX) ---- */
+.katex-display {
+    margin: 4mm 0;
+    overflow-x: auto;
+}
+
+/* ---- Mermaid diagrams ---- */
+.mermaid {
+    text-align: center;
+    margin: 4mm 0 6mm 0;
+    page-break-inside: avoid;
+}
+
+/* ---- Force LTR for math, code, and diagrams in RTL documents ---- */
+[dir="rtl"] .katex,
+[dir="rtl"] .katex-display,
+[dir="rtl"] pre,
+[dir="rtl"] code,
+[dir="rtl"] .mermaid {
+    direction: ltr;
+    unicode-bidi: isolate;
+    text-align: left;
+}
+
+[dir="rtl"] .katex-display {
+    text-align: center;
+}
+
+/* ---- Print rules ---- */
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    .box, pre, table, .mermaid {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* Avoid orphan headings at bottom of page */
+    h1, h2, h3 {
+        page-break-before: auto;
+    }
+}
+
+/* ---- Footer (rendered by Playwright header/footer template) ---- */
+/* Styles for the Playwright footer template are inline in converter.py */

@@ -1,0 +1,86 @@
+{
+  "name": "transcriber-pro",
+  "productName": "Transcriber Pro",
+  "version": "1.0.0",
+  "description": "AI-powered video transcription and lecture notes generator",
+  "author": "Transcriber Pro",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "next dev",
+    "backend": "cd backend && ./venv/bin/python server.py",
+    "dev:web": "concurrently -n backend,frontend -c blue,green \"npm:backend\" \"npm:dev\"",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "electron": "cross-env NODE_ENV=development DEV=true electron .",
+    "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && npm run electron\"",
+    "electron:build": "cross-env ELECTRON_BUILD=true next build && electron-builder",
+    "electron:build:win": "cross-env ELECTRON_BUILD=true next build && electron-builder --win",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-pdf": "^9.2.1",
+    "socket.io-client": "^4.7.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^38.3.0",
+    "electron-builder": "^26.0.12",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "wait-on": "^9.0.1"
+  },
+  "build": {
+    "appId": "com.transcriberpro.app",
+    "productName": "Transcriber Pro",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "electron/**/*",
+      "out/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "backend",
+        "to": "backend",
+        "filter": [
+          "**/*",
+          "!venv/Lib/site-packages/torch/**/*.pyd.bak",
+          "!**/__pycache__"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

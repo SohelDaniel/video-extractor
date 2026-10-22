@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card Hover Effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+}
+
+/* Processing Animation */
+@keyframes processing {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.processing-bg {
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 100%;
+  animation: processing 3s ease infinite;
+}
+
+/* react-pdf dark theme overrides */
+.pdf-viewer-container .react-pdf__Page {
+  background: transparent !important;
+}
+
+.pdf-viewer-container .react-pdf__Page__canvas {
+  border-radius: 4px;
+}
+
+.pdf-viewer-container .react-pdf__Page__textContent {
+  color: transparent;
+}
+
+.pdf-viewer-container .react-pdf__Page__annotations a {
+  color: #a78bfa;
+}
+
+.pdf-viewer-container .react-pdf__Page__annotations a:hover {
+  color: #c4b5fd;
+}
+
+/* Tab styles */
+.tab-button {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  color: #9ca3af;
+}
+
+.tab-button:hover {
+  color: #d1d5db;
+}
+
+.tab-button.active {
+  color: #a78bfa;
+  border-bottom-color: #a78bfa;
+}
+
+/* Form accent colors */
+input[type="radio"], input[type="checkbox"] {
+  accent-color: #a78bfa;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Resizable split layout */
+body.resizing {
+  user-select: none;
+  cursor: col-resize;
+}

@@ -1,0 +1,13 @@
+# macOS / Apple Silicon (MLX-based transcription — no torch/whisperx/CUDA)
+flask==3.0.0
+flask-cors==4.0.0
+flask-socketio==5.3.5
+python-socketio==5.10.0
+mlx-whisper
+opencv-python
+Pillow
+requests==2.31.0
+python-dotenv==1.0.0
+playwright>=1.40.0
+PyMuPDF>=1.24.0
+yt-dlp
